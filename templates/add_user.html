@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Добавить пользователя{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-lg-6 col-md-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-primary text-white">
+                <h2 class="h5 mb-0 text-center">Добавить нового пользователя</h2>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" class="needs-validation" novalidate>
+                    <div class="mb-4">
+                        <label for="username" class="form-label fw-bold">Имя пользователя</label>
+                        <input type="text" class="form-control form-control-lg" id="username" name="username" required placeholder="Введите имя пользователя">
+                        <div class="invalid-feedback">
+                            Пожалуйста, введите имя пользователя
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="password" class="form-label fw-bold">Пароль</label>
+                        <input type="password" class="form-control form-control-lg" id="password" name="password" required placeholder="Введите пароль">
+                        <div class="invalid-feedback">
+                            Пожалуйста, введите пароль
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="group" class="form-label fw-bold">Группа</label>
+                        <select class="form-select form-select-lg" id="group" name="group" required>
+                            <option value="" disabled selected>Выберите группу</option>
+                            <option value="student">Студент</option>
+                            <option value="teacher">Преподаватель</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Пожалуйста, выберите группу
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-3 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg py-3 fw-bold">
+                            <i class="bi bi-person-plus me-2"></i>Добавить пользователя
+                        </button>
+                        <a href="{{ url_for('users') }}" class="btn btn-outline-secondary btn-lg py-3">
+                            <i class="bi bi-x-circle me-2"></i>Отмена
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .form-control, .form-select {
+        border-radius: 8px;
+        border: 2px solid #e9ecef;
+        transition: all 0.3s;
+    }
+    .form-control:focus, .form-select:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+    .btn {
+        border-radius: 8px;
+        transition: all 0.3s;
+    }
+</style>
+{% endblock %}

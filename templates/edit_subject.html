@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Редактировать предмет{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0 text-center">Редактировать предмет</h2>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST">
+                        <div class="mb-4">
+                            <label for="title" class="form-label fw-bold">Название предмета</label>
+                            <input type="text" class="form-control form-control-lg" id="title" name="title" 
+                                   value="{{ subject.title }}" required placeholder="Введите название предмета">
+                            <div class="form-text">Максимально опишите предмет</div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="description" class="form-label fw-bold">Описание</label>
+                            <textarea class="form-control" id="description" name="description" 
+                                      rows="5" placeholder="Добавьте подробное описание">{{ subject.description }}</textarea>
+                            <div class="form-text">Вы можете добавить дополнительные детали о предмете</div>
+                        </div>
+                        
+                        <div class="d-grid gap-3 d-md-flex justify-content-md-end mt-4">
+                            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary px-4 me-md-2">
+                                <i class="bi bi-arrow-left me-2"></i>Отмена
+                            </a>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="bi bi-save me-2"></i>Сохранить изменения
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

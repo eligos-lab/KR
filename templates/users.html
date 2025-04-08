@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Пользователи{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-4 font-weight-bold text-primary">Пользователи</h1>
+        <a href="{{ url_for('add_user') }}" class="btn btn-primary btn-lg shadow-sm">
+            <i class="fas fa-user-plus mr-2"></i>Добавить пользователя
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col" class="py-3">ID</th>
+                            <th scope="col" class="py-3">Имя пользователя</th>
+                            <th scope="col" class="py-3">Группа</th>
+                            <th scope="col" class="py-3 text-right">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td class="align-middle font-weight-bold text-muted">{{ user.id }}</td>
+                            <td class="align-middle">{{ user.username }}</td>
+                            <td class="align-middle">
+                                <span class="badge badge-pill badge-info py-2 px-3">
+                                    {{ user.group }}
+                                </span>
+                            </td>
+                            <td class="align-middle text-right">
+                                <div class="btn-group" role="group">
+                                    <a href="{{ url_for('edit_user', user_id=user.id) }}" 
+                                       class="btn btn-outline-warning btn-sm rounded-left"
+                                       data-toggle="tooltip" title="Редактировать">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="{{ url_for('delete_user', user_id=user.id) }}" 
+                                       class="btn btn-outline-danger btn-sm rounded-right"
+                                       onclick="return confirm('Вы уверены, что хотите удалить этого пользователя?')"
+                                       data-toggle="tooltip" title="Удалить">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+{% endblock %}

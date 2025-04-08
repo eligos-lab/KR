@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Добавить предмет{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title text-center mb-0 py-2">Добавить новый предмет</h2>
+                </div>
+                <div class="card-body px-5 py-4">
+                    <form method="POST" class="needs-validation" novalidate>
+                        <div class="mb-4">
+                            <label for="title" class="form-label fw-bold">Название предмета</label>
+                            <input type="text" class="form-control form-control-lg" id="title" name="title" required placeholder="Введите название предмета">
+                            <div class="invalid-feedback">
+                                Пожалуйста, введите название предмета.
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="description" class="form-label fw-bold">Описание</label>
+                            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Добавьте описание предмета (необязательно)"></textarea>
+                        </div>
+                        <div class="d-grid gap-3 d-md-flex justify-content-md-end mt-4">
+                            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary px-4 me-md-2">Отмена</a>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="bi bi-plus-circle me-2"></i>Добавить предмет
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+    .btn-primary {
+        transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
+{% endblock %}
